@@ -5,7 +5,7 @@ VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *;
 
 -- name: GetProduto :one
 SELECT * FROM produtos
-WHERE id=$1 LIMIT 1;
+WHERE codigo_barras=$1 LIMIT 1;
 
 -- name: ListProdutos :many
 SELECT * FROM produtos
@@ -15,8 +15,8 @@ OFFSET $2;
 
 -- name: UpdateProduto :one
 UPDATE produtos
-SET codigo_barras=$1, nome=$2, descricao=$3, foto=$4, valorpago=$5, valorvenda=$6, qtde=$7, und_cod=$8, cat_cod=$9, scat_cod=$10, data_atualizacao=now()
-WHERE id=$1
+SET  nome=$2, descricao=$3, foto=$4, valorpago=$5, valorvenda=$6, qtde=$7, und_cod=$8, cat_cod=$9, scat_cod=$10, data_atualizacao=now()
+WHERE codigo_barras=$1
 RETURNING *;
 
 -- name: DeleteProduto :exec

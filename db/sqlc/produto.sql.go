@@ -17,17 +17,17 @@ VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id, codigo_barras, nome, de
 `
 
 type CreateProdutoParams struct {
-	CodigoBarras    sql.NullInt64  `json:"codigo_barras"`
-	Nome            string         `json:"nome"`
-	Descricao       sql.NullString `json:"descricao"`
-	Foto            sql.NullString `json:"foto"`
-	Valorpago       int64          `json:"valorpago"`
-	Valorvenda      int64          `json:"valorvenda"`
-	Qtde            int64          `json:"qtde"`
-	UndCod          sql.NullInt64  `json:"und_cod"`
-	CatCod          sql.NullInt64  `json:"cat_cod"`
-	ScatCod         sql.NullInt64  `json:"scat_cod"`
-	DataAtualizacao sql.NullTime   `json:"data_atualizacao"`
+	CodigoBarras    int64        `json:"codigo_barras"`
+	Nome            string       `json:"nome"`
+	Descricao       string       `json:"descricao"`
+	Foto            string       `json:"foto"`
+	Valorpago       int64        `json:"valorpago"`
+	Valorvenda      int64        `json:"valorvenda"`
+	Qtde            int64        `json:"qtde"`
+	UndCod          int64        `json:"und_cod"`
+	CatCod          int64        `json:"cat_cod"`
+	ScatCod         int64        `json:"scat_cod"`
+	DataAtualizacao sql.NullTime `json:"data_atualizacao"`
 }
 
 func (q *Queries) CreateProduto(ctx context.Context, arg CreateProdutoParams) (Produto, error) {
@@ -75,11 +75,11 @@ func (q *Queries) DeleteProduto(ctx context.Context, id int64) error {
 
 const getProduto = `-- name: GetProduto :one
 SELECT id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_criacao, data_atualizacao FROM produtos
-WHERE id=$1 LIMIT 1
+WHERE codigo_barras=$1 LIMIT 1
 `
 
-func (q *Queries) GetProduto(ctx context.Context, id int64) (Produto, error) {
-	row := q.db.QueryRowContext(ctx, getProduto, id)
+func (q *Queries) GetProduto(ctx context.Context, codigoBarras int64) (Produto, error) {
+	row := q.db.QueryRowContext(ctx, getProduto, codigoBarras)
 	var i Produto
 	err := row.Scan(
 		&i.ID,
@@ -150,22 +150,22 @@ func (q *Queries) ListProdutos(ctx context.Context, arg ListProdutosParams) ([]P
 
 const updateProduto = `-- name: UpdateProduto :one
 UPDATE produtos
-SET codigo_barras=$1, nome=$2, descricao=$3, foto=$4, valorpago=$5, valorvenda=$6, qtde=$7, und_cod=$8, cat_cod=$9, scat_cod=$10, data_atualizacao=now()
-WHERE id=$1
+SET  nome=$2, descricao=$3, foto=$4, valorpago=$5, valorvenda=$6, qtde=$7, und_cod=$8, cat_cod=$9, scat_cod=$10, data_atualizacao=now()
+WHERE codigo_barras=$1
 RETURNING id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_criacao, data_atualizacao
 `
 
 type UpdateProdutoParams struct {
-	CodigoBarras sql.NullInt64  `json:"codigo_barras"`
-	Nome         string         `json:"nome"`
-	Descricao    sql.NullString `json:"descricao"`
-	Foto         sql.NullString `json:"foto"`
-	Valorpago    int64          `json:"valorpago"`
-	Valorvenda   int64          `json:"valorvenda"`
-	Qtde         int64          `json:"qtde"`
-	UndCod       sql.NullInt64  `json:"und_cod"`
-	CatCod       sql.NullInt64  `json:"cat_cod"`
-	ScatCod      sql.NullInt64  `json:"scat_cod"`
+	CodigoBarras int64  `json:"codigo_barras"`
+	Nome         string `json:"nome"`
+	Descricao    string `json:"descricao"`
+	Foto         string `json:"foto"`
+	Valorpago    int64  `json:"valorpago"`
+	Valorvenda   int64  `json:"valorvenda"`
+	Qtde         int64  `json:"qtde"`
+	UndCod       int64  `json:"und_cod"`
+	CatCod       int64  `json:"cat_cod"`
+	ScatCod      int64  `json:"scat_cod"`
 }
 
 func (q *Queries) UpdateProduto(ctx context.Context, arg UpdateProdutoParams) (Produto, error) {

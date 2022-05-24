@@ -10,5 +10,7 @@ migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/pdv_estoque?sslmode=disable" -verbose down
 sqlc:
 	sqlc generate
+test:
+	go test -v -cover ./...
 
 .PHONY:postgres createdb dropdb migrateup migratedown sqlc

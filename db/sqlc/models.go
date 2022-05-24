@@ -10,17 +10,17 @@ import (
 )
 
 type Produto struct {
-	ID              int64          `json:"id"`
-	CodigoBarras    sql.NullInt64  `json:"codigo_barras"`
-	Nome            string         `json:"nome"`
-	Descricao       sql.NullString `json:"descricao"`
-	Foto            sql.NullString `json:"foto"`
-	Valorpago       int64          `json:"valorpago"`
-	Valorvenda      int64          `json:"valorvenda"`
-	Qtde            int64          `json:"qtde"`
-	UndCod          sql.NullInt64  `json:"und_cod"`
-	CatCod          sql.NullInt64  `json:"cat_cod"`
-	ScatCod         sql.NullInt64  `json:"scat_cod"`
-	DataCriacao     time.Time      `json:"data_criacao"`
-	DataAtualizacao sql.NullTime   `json:"data_atualizacao"`
+	ID              int64        `json:"id"`
+	CodigoBarras    int64        `json:"codigo_barras"`
+	Nome            string       `json:"nome"`
+	Descricao       string       `json:"descricao"`
+	Foto            string       `json:"foto"`
+	Valorpago       int64        `json:"valorpago"`
+	Valorvenda      int64        `json:"valorvenda"`
+	Qtde            int64        `json:"qtde"`
+	UndCod          int64        `json:"und_cod"`
+	CatCod          int64        `json:"cat_cod"`
+	ScatCod         int64        `json:"scat_cod"`
+	DataCriacao     time.Time    `json:"data_criacao"`
+	DataAtualizacao sql.NullTime `json:"data_atualizacao"`
 }

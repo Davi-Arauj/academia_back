@@ -11,7 +11,7 @@ import (
 type Querier interface {
 	CreateProduto(ctx context.Context, arg CreateProdutoParams) (Produto, error)
 	DeleteProduto(ctx context.Context, id int64) error
-	GetProduto(ctx context.Context, id int64) (Produto, error)
+	GetProduto(ctx context.Context, codigoBarras int64) (Produto, error)
 	ListProdutos(ctx context.Context, arg ListProdutosParams) ([]Produto, error)
 	UpdateProduto(ctx context.Context, arg UpdateProdutoParams) (Produto, error)
 }
