@@ -7,27 +7,25 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createProduto = `-- name: CreateProduto :one
 INSERT INTO produtos
-(codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_atualizacao)
-VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_criacao, data_atualizacao
+(codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod)
+VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_criacao, data_atualizacao
 `
 
 type CreateProdutoParams struct {
-	CodigoBarras    int64        `json:"codigo_barras"`
-	Nome            string       `json:"nome"`
-	Descricao       string       `json:"descricao"`
-	Foto            string       `json:"foto"`
-	Valorpago       int64        `json:"valorpago"`
-	Valorvenda      int64        `json:"valorvenda"`
-	Qtde            int64        `json:"qtde"`
-	UndCod          int64        `json:"und_cod"`
-	CatCod          int64        `json:"cat_cod"`
-	ScatCod         int64        `json:"scat_cod"`
-	DataAtualizacao sql.NullTime `json:"data_atualizacao"`
+	CodigoBarras int64  `json:"codigo_barras"`
+	Nome         string `json:"nome"`
+	Descricao    string `json:"descricao"`
+	Foto         string `json:"foto"`
+	Valorpago    int64  `json:"valorpago"`
+	Valorvenda   int64  `json:"valorvenda"`
+	Qtde         int64  `json:"qtde"`
+	UndCod       int64  `json:"und_cod"`
+	CatCod       int64  `json:"cat_cod"`
+	ScatCod      int64  `json:"scat_cod"`
 }
 
 func (q *Queries) CreateProduto(ctx context.Context, arg CreateProdutoParams) (Produto, error) {
@@ -42,7 +40,6 @@ func (q *Queries) CreateProduto(ctx context.Context, arg CreateProdutoParams) (P
 		arg.UndCod,
 		arg.CatCod,
 		arg.ScatCod,
-		arg.DataAtualizacao,
 	)
 	var i Produto
 	err := row.Scan(
