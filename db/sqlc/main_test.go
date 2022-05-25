@@ -4,21 +4,17 @@ import (
 	"database/sql"
 	"log"
 	"os"
+	"pdv/util"
 	"testing"
 
 	_ "github.com/lib/pq"
 )
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:secret@localhost:5432/pdv_estoque?sslmode=disable"
-)
-
 var testQueries *Queries
 
 func TestMain(m *testing.M) {
-
-	conn, err := sql.Open(dbDriver, dbSource)
+	config, err := util.LoadConfig("../..")
+	conn, err := sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("Não foi possivel se conectar ao Banco de Dados:", err)
 	}
