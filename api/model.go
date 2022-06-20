@@ -16,7 +16,7 @@ type Req struct {
 }
 
 type Res struct {
-	ID              string    `json:"id,omitempty" codinome:"id"`
+	ID              int64    `json:"id,omitempty" codinome:"id"`
 	DataCriacao     time.Time `json:"data_criacao,omitempty" codinome:"data_criacao"`
 	DataAtualizacao time.Time `json:"data_atualizacao" codinome:"data_atualizacao"`
 	CodBarras       int64     `json:"cod_barras" codinome:"cod_barras"`

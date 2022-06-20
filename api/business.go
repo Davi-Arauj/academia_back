@@ -55,7 +55,7 @@ func (server *Server) getProduto(ctx *gin.Context) {
 	produto, err := server.store.GetProduto(ctx, req.CodBarras)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			ctx.JSON(http.StatusBadRequest, errorResponse(err))
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
 			return
 		}
 

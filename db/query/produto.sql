@@ -22,3 +22,5 @@ RETURNING *;
 -- name: DeleteProduto :exec
 DELETE FROM produtos
 WHERE id=$1;
+
+

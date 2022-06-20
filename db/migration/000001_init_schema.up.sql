@@ -13,3 +13,16 @@ CREATE TABLE "produtos" (
 	"data_criacao" timestamptz NOT NULL DEFAULT (now()),
 	"data_atualizacao" timestamptz NULL
 );
+
+CREATE TABLE "clientes" (
+  "id" varchar PRIMARY KEY NOT NULL,
+  "nome" varchar NOT NULL,
+  "email" varchar NOT NULL,
+  "cpf" varchar,
+  "fone" int,
+  "foto" varchar,
+  "sexo" varchar,
+  "data_nascimento" timestamp,
+  "data_criacao" timestamptz NOT NULL DEFAULT (now()),
+  "data_atualizacao" timestamptz NULL
+);
