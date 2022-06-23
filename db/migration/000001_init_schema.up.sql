@@ -15,14 +15,14 @@ CREATE TABLE "produtos" (
 );
 
 CREATE TABLE "clientes" (
-  "id" varchar PRIMARY KEY NOT NULL,
+  "id" bigserial PRIMARY KEY,
   "nome" varchar NOT NULL,
   "email" varchar NOT NULL,
-  "cpf" varchar,
-  "fone" int,
-  "foto" varchar,
-  "sexo" varchar,
-  "data_nascimento" timestamp,
+  "cpf" varchar NOT NULL,
+  "fone" bigint NOT NULL,
+  "foto" varchar NOT NULL,
+  "sexo" varchar NOT NULL,
+  "data_nascimento" timestamp NOT NULL,
   "data_criacao" timestamptz NOT NULL DEFAULT (now()),
   "data_atualizacao" timestamptz NULL
 );

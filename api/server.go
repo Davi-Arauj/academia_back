@@ -2,7 +2,6 @@ package api
 
 import (
 	db "pdv/db/sqlc"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,10 +14,10 @@ type Server struct {
 func NewServer(store db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
-
-	router.POST("/api/v1/produtos", server.createProduto)
-	router.GET("/api/v1/produtos/:cod_barras", server.getProduto)
-	router.GET("/api/v1/produtos", server.listProduto)
+	
+	router.POST("/api/v1/produtos", server.CreateProduto)
+	router.GET("/api/v1/produtos/:cod_barras", server.GetProduto)
+	router.GET("/api/v1/produtos", server.ListProduto)
 
 	server.router = router
 	return server

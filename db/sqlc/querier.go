@@ -11,7 +11,7 @@ import (
 type Querier interface {
 	CreateCliente(ctx context.Context, arg CreateClienteParams) (Cliente, error)
 	CreateProduto(ctx context.Context, arg CreateProdutoParams) (Produto, error)
-	DeleteCliente(ctx context.Context, id string) error
+	DeleteCliente(ctx context.Context, id int64) error
 	DeleteProduto(ctx context.Context, id int64) error
 	GetCliente(ctx context.Context, nome string) (Cliente, error)
 	GetProduto(ctx context.Context, codigoBarras int64) (Produto, error)

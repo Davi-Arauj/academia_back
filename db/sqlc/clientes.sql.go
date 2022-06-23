@@ -7,7 +7,7 @@ package db
 
 import (
 	"context"
-	"database/sql"
+	"time"
 )
 
 const createCliente = `-- name: CreateCliente :one
@@ -17,13 +17,13 @@ VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id, nome, email, cpf, fone, foto, sexo, d
 `
 
 type CreateClienteParams struct {
-	Nome           string         `json:"nome"`
-	Email          string         `json:"email"`
-	Cpf            sql.NullString `json:"cpf"`
-	Fone           sql.NullInt32  `json:"fone"`
-	Sexo           sql.NullString `json:"sexo"`
-	Foto           sql.NullString `json:"foto"`
-	DataNascimento sql.NullTime   `json:"data_nascimento"`
+	Nome           string    `json:"nome"`
+	Email          string    `json:"email"`
+	Cpf            string    `json:"cpf"`
+	Fone           int64     `json:"fone"`
+	Sexo           string    `json:"sexo"`
+	Foto           string    `json:"foto"`
+	DataNascimento time.Time `json:"data_nascimento"`
 }
 
 func (q *Queries) CreateCliente(ctx context.Context, arg CreateClienteParams) (Cliente, error) {
@@ -57,7 +57,7 @@ DELETE FROM clientes
 WHERE id=$1
 `
 
-func (q *Queries) DeleteCliente(ctx context.Context, id string) error {
+func (q *Queries) DeleteCliente(ctx context.Context, id int64) error {
 	_, err := q.db.ExecContext(ctx, deleteCliente, id)
 	return err
 }
@@ -139,14 +139,14 @@ RETURNING id, nome, email, cpf, fone, foto, sexo, data_nascimento, data_criacao,
 `
 
 type UpdateClienteParams struct {
-	ID             string         `json:"id"`
-	Nome           string         `json:"nome"`
-	Email          string         `json:"email"`
-	Cpf            sql.NullString `json:"cpf"`
-	Fone           sql.NullInt32  `json:"fone"`
-	Sexo           sql.NullString `json:"sexo"`
-	Foto           sql.NullString `json:"foto"`
-	DataNascimento sql.NullTime   `json:"data_nascimento"`
+	ID             int64     `json:"id"`
+	Nome           string    `json:"nome"`
+	Email          string    `json:"email"`
+	Cpf            string    `json:"cpf"`
+	Fone           int64     `json:"fone"`
+	Sexo           string    `json:"sexo"`
+	Foto           string    `json:"foto"`
+	DataNascimento time.Time `json:"data_nascimento"`
 }
 
 func (q *Queries) UpdateCliente(ctx context.Context, arg UpdateClienteParams) (Cliente, error) {

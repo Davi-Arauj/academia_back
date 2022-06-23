@@ -4,7 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	_"github.com/golang/mock/mockgen/model"
+
+	_ "github.com/golang/mock/mockgen/model"
 )
 
 type Store interface {

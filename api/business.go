@@ -9,7 +9,7 @@ import (
 	"github.com/lib/pq"
 )
 
-func (server *Server) createProduto(ctx *gin.Context) {
+func (server *Server) CreateProduto(ctx *gin.Context) {
 	var req Req
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
@@ -45,7 +45,7 @@ func (server *Server) createProduto(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, produto)
 }
 
-func (server *Server) getProduto(ctx *gin.Context) {
+func (server *Server) GetProduto(ctx *gin.Context) {
 	var req GetProdutoReq
 	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
@@ -66,7 +66,7 @@ func (server *Server) getProduto(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, produto)
 }
 
-func (server *Server) listProduto(ctx *gin.Context) {
+func (server *Server) ListProduto(ctx *gin.Context) {
 	var req listProdutoRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))

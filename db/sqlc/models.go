@@ -10,16 +10,16 @@ import (
 )
 
 type Cliente struct {
-	ID              string         `json:"id"`
-	Nome            string         `json:"nome"`
-	Email           string         `json:"email"`
-	Cpf             sql.NullString `json:"cpf"`
-	Fone            sql.NullInt32  `json:"fone"`
-	Foto            sql.NullString `json:"foto"`
-	Sexo            sql.NullString `json:"sexo"`
-	DataNascimento  sql.NullTime   `json:"data_nascimento"`
-	DataCriacao     time.Time      `json:"data_criacao"`
-	DataAtualizacao sql.NullTime   `json:"data_atualizacao"`
+	ID              int64        `json:"id"`
+	Nome            string       `json:"nome"`
+	Email           string       `json:"email"`
+	Cpf             string       `json:"cpf"`
+	Fone            int64        `json:"fone"`
+	Foto            string       `json:"foto"`
+	Sexo            string       `json:"sexo"`
+	DataNascimento  time.Time    `json:"data_nascimento"`
+	DataCriacao     time.Time    `json:"data_criacao"`
+	DataAtualizacao sql.NullTime `json:"data_atualizacao"`
 }
 
 type Produto struct {

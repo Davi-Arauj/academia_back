@@ -1,1 +1,2 @@
 DROP TABLE IF EXIST produtos;
+DROP TABLE IF EXIST clientes;

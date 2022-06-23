@@ -117,15 +117,15 @@ func TestGetProduto(t *testing.T) {
 
 func randomProduto() db.Produto {
 	return db.Produto{
-		CodigoBarras: util.RandomCodigoBarras(),
-		Nome:         util.RandomNome(),
-		Descricao:    util.RandomDescricao(),
-		Foto:         util.RandomFoto(),
-		Valorpago:    util.RandomValorpago(),
-		Valorvenda:   util.RandomValorvenda(),
-		Qtde:         util.RandomQtde(),
-		UndCod:       util.RandomUndCod(),
-		CatCod:       util.RandomCatCod(),
-		ScatCod:      util.RandomScatCod(),
+		CodigoBarras: util.RandomInt(0, 100),
+		Nome:         util.RandomString(6),
+		Descricao:    util.RandomString(6),
+		Foto:         util.RandomString(6),
+		Valorpago:    util.RandomInt(0, 100),
+		Valorvenda:   util.RandomInt(0, 100),
+		Qtde:         util.RandomInt(0, 100),
+		UndCod:       util.RandomInt(0, 100),
+		CatCod:       util.RandomInt(0, 100),
+		ScatCod:      util.RandomInt(0, 100),
 	}
 }

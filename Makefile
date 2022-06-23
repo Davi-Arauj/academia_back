@@ -15,6 +15,6 @@ test:
 server:
 	go run main.go
 mock:
-	mockgen -package mockdb -destination db/mock/store.go github.com/back/db/sqlc Store
+	mockgen -package mockdb -destination /home/optiplex/go_projects/src/github.com/back/db/mock/store.go pdv/db/sqlc Store
 
-.PHONY:postgres createdb dropdb migrateup migratedown sqlc server mock
+.PHONY:postgres createdb dropdb migrateup migratedown sqlc test server mock
