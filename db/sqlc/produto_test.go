@@ -74,7 +74,7 @@ func TestUpdateProduto(t *testing.T) {
 
 func TestGetProduto(t *testing.T) {
 	produto1 := createRandomProduto(t)
-	produto2, err := testQueries.GetProduto(context.Background(), produto1.CodigoBarras)
+	produto2, err := testQueries.GetProduto(context.Background(), produto1.ID)
 	require.NoError(t, err)
 	require.NotEmpty(t, produto2)
 
@@ -97,7 +97,7 @@ func TestDeleteProduto(t *testing.T) {
 	err := testQueries.DeleteProduto(context.Background(), produto1.ID)
 	require.NoError(t, err)
 
-	produto2, err := testQueries.GetProduto(context.Background(), produto1.CodigoBarras)
+	produto2, err := testQueries.GetProduto(context.Background(), produto1.ID)
 	require.Error(t, err)
 	require.EqualError(t, err, sql.ErrNoRows.Error())
 	require.Empty(t, produto2)

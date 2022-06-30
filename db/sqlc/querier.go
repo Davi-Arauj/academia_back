@@ -14,7 +14,7 @@ type Querier interface {
 	DeleteCliente(ctx context.Context, id int64) error
 	DeleteProduto(ctx context.Context, id int64) error
 	GetCliente(ctx context.Context, nome string) (Cliente, error)
-	GetProduto(ctx context.Context, codigoBarras int64) (Produto, error)
+	GetProduto(ctx context.Context, id int64) (Produto, error)
 	ListClientes(ctx context.Context, arg ListClientesParams) ([]Cliente, error)
 	ListProdutos(ctx context.Context, arg ListProdutosParams) ([]Produto, error)
 	UpdateCliente(ctx context.Context, arg UpdateClienteParams) (Cliente, error)

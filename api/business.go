@@ -6,7 +6,6 @@ import (
 	db "pdv/db/sqlc"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lib/pq"
 )
 
 func (server *Server) CreateProduto(ctx *gin.Context) {
@@ -31,14 +30,6 @@ func (server *Server) CreateProduto(ctx *gin.Context) {
 
 	produto, err := server.store.CreateProduto(ctx, arg)
 	if err != nil {
-		if pqErr, ok := err.(*pq.Error); ok {
-			switch pqErr.Code.Name() {
-			case "foreign_key_violation", "unique_violation":
-				ctx.JSON(http.StatusForbidden, errorResponse(err))
-				return
-			}
-
-		}
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}

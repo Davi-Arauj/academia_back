@@ -5,7 +5,7 @@ VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *;
 
 -- name: GetProduto :one
 SELECT * FROM produtos
-WHERE codigo_barras=$1 LIMIT 1;
+WHERE id=$1 LIMIT 1;
 
 -- name: ListProdutos :many
 SELECT * FROM produtos

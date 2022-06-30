@@ -72,11 +72,11 @@ func (q *Queries) DeleteProduto(ctx context.Context, id int64) error {
 
 const getProduto = `-- name: GetProduto :one
 SELECT id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde, und_cod, cat_cod, scat_cod, data_criacao, data_atualizacao FROM produtos
-WHERE codigo_barras=$1 LIMIT 1
+WHERE id=$1 LIMIT 1
 `
 
-func (q *Queries) GetProduto(ctx context.Context, codigoBarras int64) (Produto, error) {
-	row := q.db.QueryRowContext(ctx, getProduto, codigoBarras)
+func (q *Queries) GetProduto(ctx context.Context, id int64) (Produto, error) {
+	row := q.db.QueryRowContext(ctx, getProduto, id)
 	var i Produto
 	err := row.Scan(
 		&i.ID,
