@@ -28,8 +28,8 @@ type Produto struct {
 	Nome            string       `json:"nome"`
 	Descricao       string       `json:"descricao"`
 	Foto            string       `json:"foto"`
-	Valorpago       int64        `json:"valorpago"`
-	Valorvenda      int64        `json:"valorvenda"`
+	Valorpago       float64      `json:"valorpago"`
+	Valorvenda      float64      `json:"valorvenda"`
 	Qtde            int64        `json:"qtde"`
 	UndCod          int64        `json:"und_cod"`
 	CatCod          int64        `json:"cat_cod"`

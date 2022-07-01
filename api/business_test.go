@@ -82,7 +82,7 @@ func TestGetProduto(t *testing.T) {
 			server := NewServer(store)
 			recorder := httptest.NewRecorder()
 
-			url := fmt.Sprintf("/api/v1/produtos/%d", tc.produtoCodBarras)
+			url := fmt.Sprintf("/api/v1/products/%d", tc.produtoCodBarras)
 			request, err := http.NewRequest(http.MethodGet, url, nil)
 			require.NoError(t, err)
 
@@ -104,7 +104,7 @@ func TestCreateProduto(t *testing.T) {
 		{
 			name: "OK",
 			body: gin.H{
-				"cod_barras": produto.CodigoBarras,
+				"codigo_barras": produto.CodigoBarras,
 				"nome":       produto.Nome,
 				"descricao":  produto.Descricao,
 				"foto":       produto.Foto,
@@ -189,7 +189,7 @@ func TestCreateProduto(t *testing.T) {
 			data, err := json.Marshal(tc.body)
 			require.NoError(t, err)
 
-			url := "/api/v1/produtos"
+			url := "/api/v1/products"
 			request, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			require.NoError(t, err)
 
@@ -205,8 +205,8 @@ func randomProduto() db.Produto {
 		Nome:         util.RandomString(6),
 		Descricao:    util.RandomString(6),
 		Foto:         util.RandomString(6),
-		Valorpago:    util.RandomInt(0, 100),
-		Valorvenda:   util.RandomInt(0, 100),
+		Valorpago:    util.RandomFloat(0, 100),
+		Valorvenda:   util.RandomFloat(0, 100),
 		Qtde:         util.RandomInt(0, 100),
 		UndCod:       util.RandomInt(0, 100),
 		CatCod:       util.RandomInt(0, 100),

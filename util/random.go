@@ -1,6 +1,7 @@
 package util
 
 import (
+	"math"
 	"math/rand"
 	"strings"
 	"time"
@@ -15,6 +16,11 @@ func init() {
 // RandomInt gera um numero aleatorio
 func RandomInt(min, max int64) int64 {
 	return min + rand.Int63n(max-min+1)
+}
+
+// RandomInt gera um numero aleatorio
+func RandomFloat(min, max float64) float64 {
+	return math.Round(min + rand.Float64() * (max-min))
 }
 
 // RandomString gera uma string aleatorio

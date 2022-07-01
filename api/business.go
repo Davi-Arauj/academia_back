@@ -16,13 +16,13 @@ func (server *Server) CreateProduto(ctx *gin.Context) {
 	}
 
 	arg := db.CreateProdutoParams{
-		CodigoBarras: req.CodBarras,
+		CodigoBarras: req.CodigoBarras,
 		Nome:         req.Nome,
 		Descricao:    req.Descricao,
 		Foto:         req.Foto,
-		Valorpago:    int64(req.ValorPago),
-		Valorvenda:   int64(req.ValorVenda),
-		Qtde:         int64(req.Qtde),
+		Valorpago:    req.Valorpago,
+		Valorvenda:   req.Valorvenda,
+		Qtde:         req.Qtde,
 		UndCod:       req.UndCod,
 		CatCod:       req.CatCod,
 		ScatCod:      req.ScatCod,
@@ -43,7 +43,7 @@ func (server *Server) GetProduto(ctx *gin.Context) {
 		return
 	}
 
-	produto, err := server.store.GetProduto(ctx, req.CodBarras)
+	produto, err := server.store.GetProduto(ctx, req.CodigoBarras)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))

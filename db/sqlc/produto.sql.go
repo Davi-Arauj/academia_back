@@ -16,16 +16,16 @@ VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id, codigo_barras, nome, descri
 `
 
 type CreateProdutoParams struct {
-	CodigoBarras int64  `json:"codigo_barras"`
-	Nome         string `json:"nome"`
-	Descricao    string `json:"descricao"`
-	Foto         string `json:"foto"`
-	Valorpago    int64  `json:"valorpago"`
-	Valorvenda   int64  `json:"valorvenda"`
-	Qtde         int64  `json:"qtde"`
-	UndCod       int64  `json:"und_cod"`
-	CatCod       int64  `json:"cat_cod"`
-	ScatCod      int64  `json:"scat_cod"`
+	CodigoBarras int64   `json:"codigo_barras"`
+	Nome         string  `json:"nome"`
+	Descricao    string  `json:"descricao"`
+	Foto         string  `json:"foto"`
+	Valorpago    float64 `json:"valorpago"`
+	Valorvenda   float64 `json:"valorvenda"`
+	Qtde         int64   `json:"qtde"`
+	UndCod       int64   `json:"und_cod"`
+	CatCod       int64   `json:"cat_cod"`
+	ScatCod      int64   `json:"scat_cod"`
 }
 
 func (q *Queries) CreateProduto(ctx context.Context, arg CreateProdutoParams) (Produto, error) {
@@ -153,16 +153,16 @@ RETURNING id, codigo_barras, nome, descricao, foto, valorpago, valorvenda, qtde,
 `
 
 type UpdateProdutoParams struct {
-	CodigoBarras int64  `json:"codigo_barras"`
-	Nome         string `json:"nome"`
-	Descricao    string `json:"descricao"`
-	Foto         string `json:"foto"`
-	Valorpago    int64  `json:"valorpago"`
-	Valorvenda   int64  `json:"valorvenda"`
-	Qtde         int64  `json:"qtde"`
-	UndCod       int64  `json:"und_cod"`
-	CatCod       int64  `json:"cat_cod"`
-	ScatCod      int64  `json:"scat_cod"`
+	CodigoBarras int64   `json:"codigo_barras"`
+	Nome         string  `json:"nome"`
+	Descricao    string  `json:"descricao"`
+	Foto         string  `json:"foto"`
+	Valorpago    float64 `json:"valorpago"`
+	Valorvenda   float64 `json:"valorvenda"`
+	Qtde         int64   `json:"qtde"`
+	UndCod       int64   `json:"und_cod"`
+	CatCod       int64   `json:"cat_cod"`
+	ScatCod      int64   `json:"scat_cod"`
 }
 
 func (q *Queries) UpdateProduto(ctx context.Context, arg UpdateProdutoParams) (Produto, error) {
